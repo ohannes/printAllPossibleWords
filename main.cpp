@@ -4,6 +4,13 @@
 #include <ctime>
 #include <cmath>
 
+void printWord(char* word, int length) {
+	for(int i=0; i<length; i++) {
+		std::cout << word[i] + " "
+	}
+	std::cout << std::endl;
+}
+
 void printAllPossibleWordsOfLength(char firstChar, char lastChar, int length) {
 	char *word = new char[length];
 	memset(word, firstChar, length);
@@ -14,7 +21,7 @@ void printAllPossibleWordsOfLength(char firstChar, char lastChar, int length) {
 
 	std::cout << word << " -> " << lastWord << std::endl;
 	while(true) {
-		std::cout << word << std::endl;
+		printWord(word, length);
 		count += 1;
 		if(memcmp(word, lastWord, length) == 0) {
 			break;
@@ -51,7 +58,7 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 	clock_t t = clock();
-	printAllPossibleWordsOfLength('B', 'D', length);
+	printAllPossibleWordsOfLength('1', '49', length);
 	t = clock() - t;
   	std:: cout << "Duration: " << t << " clicks (" << ((float)t)/CLOCKS_PER_SEC << " seconds)" << std::endl;
     return 0;
