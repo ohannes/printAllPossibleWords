@@ -10,29 +10,28 @@ void printAllPossibleWordsOfLength(char firstChar, char lastChar, int length) {
 	char *lastWord = new char[length];
 	memset(lastWord, lastChar, length);
 	int count = 0;
+	int lastIndex = length - 1;
 
 	std::cout << word << " -> " << lastWord << std::endl;
-
 	while(true) {
 		std::cout << word << std::endl;
 		count += 1;
 		if(memcmp(word, lastWord, length) == 0) {
 			break;
 		}
-		if(word[length - 1] != lastChar) {
-			word[length - 1] += 1;
+		if(word[lastIndex] != lastChar) {
+			word[lastIndex] += 1;
 		} else {
 			for(int i=1; i<length; i++) {
-				int index = length - i - 1;
+				int index = lastIndex - i;
 				if(word[index] != lastChar) {
 					word[index] += 1;
-					memset(word+index+1, firstChar, length - index - 1);
+					memset(word+index+1, firstChar, i);
 					break;
 				}
 			}
 		}
 	}
-
 	std::cout << "count: " << count << std::endl;
 
 	delete[] word;
@@ -52,7 +51,7 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 	clock_t t = clock();
-	printAllPossibleWordsOfLength('A', 'Z', length);
+	printAllPossibleWordsOfLength('B', 'D', length);
 	t = clock() - t;
   	std:: cout << "Duration: " << t << " clicks (" << ((float)t)/CLOCKS_PER_SEC << " seconds)" << std::endl;
     return 0;
