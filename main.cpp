@@ -6,7 +6,7 @@
 
 void printWord(char* word, int length) {
 	for(int i=0; i<length; i++) {
-		std::cout << word[i] + " "
+		std::cout << word[i] << " ";
 	}
 	std::cout << std::endl;
 }
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 	clock_t t = clock();
-	printAllPossibleWordsOfLength('1', '49', length);
+	printAllPossibleWordsOfLength('A', 'Z', length);
 	t = clock() - t;
   	std:: cout << "Duration: " << t << " clicks (" << ((float)t)/CLOCKS_PER_SEC << " seconds)" << std::endl;
     return 0;
